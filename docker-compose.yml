@@ -1,0 +1,53 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    container_name: serveur
+    environment:
+      DB_HOST: db
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./site/:/var/www/
+    depends_on:
+      - db
+    networks:
+      - reseau_db_serv
+    ports:
+      - "8080:80"
+    
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    container_name: bdd
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - reseau_db_serv
+      - reseau_db_phpmyadmin
+    
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      - PMA_HOST=db
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+    networks:
+      - reseau_db_phpmyadmin
+    
+networks:
+  reseau_db_phpmyadmin:
+  reseau_db_serv:
+
+volumes:
+  db_data:
