@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ ."/../fonctions_back/db.php";
+$cat_principales = get_cat()
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,9 +26,14 @@
             </div>
         </div>
         <div class="d-none d-lg-flex flex-row justify-content-evenly bg-white align-items-center">
-            <p value="all">
+            <a href='/?catalogue=1&cat=all' class="my-3">
                 Tout les produits
-            </p>
+            </a>
+            <?php
+            foreach($cat_principales as $cle => $value){
+                echo "<a href='/?catalogue=1&cat=".$value["id"]."'".">".$value["nom_categorie"]."</a>";
+            }
+            ?>
         </div>
 
         <!-- header telephone -->

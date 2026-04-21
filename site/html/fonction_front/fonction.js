@@ -40,3 +40,8 @@ function afficher_produits(json_prod){
 function vider_produit(){
     document.getElementById("catalogue").replaceChildren()
 }
+
+function filtrer_cat(json_prod, id_cat, id_cat_sub = []) {
+    return json_prod.filter(prod => 
+        prod.id_categorie == id_cat || id_cat_sub.includes(prod.id_categorie));
+}

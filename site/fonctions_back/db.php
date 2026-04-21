@@ -21,3 +21,17 @@ function requete($sql,$execute_var=null){
     
     return $res;
 }
+
+//renvoie les catégories princpales
+function get_cat(){
+    global $conn;
+
+    $sql = "SELECT id,nom_categorie FROM `_categorie` WHERE id_categorie_sup IS NULL";
+    $dsn = $conn->prepare($sql);
+
+    $dsn->execute();
+   
+    $res = $dsn->fetchAll(PDO::FETCH_ASSOC);
+    
+    return $res;
+}
