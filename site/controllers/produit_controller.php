@@ -10,5 +10,9 @@ class ProduitController {
         echo json_encode($all_produits, JSON_UNESCAPED_UNICODE);
         exit;
     }
+
+    static function max_prix(){
+        return Produit::max_prix()[0]["max"];
+    }
 }
 ?>

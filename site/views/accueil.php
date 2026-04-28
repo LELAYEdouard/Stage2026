@@ -1,25 +1,25 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <section>
-    <div class="swiper mySwiper">
+    <div class="d-none d-md-block swiper mySwiper">
         <span class="swiper-button-prev"></span>
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-            <img class="rounded" src="img/img_presentation.jpg" alt="">
+            <img class="rounded" src="img/img_presentation.jpg" alt="img_presentation">
             </div>
             <div class="swiper-slide">
-            <img class="rounded" src="img/interieur.jpg" alt="">
+            <img class="rounded" src="img/interieur.jpg" alt="interieur">
             </div>
             <div class="swiper-slide">
-            <img class="rounded" src="img/deventure.jpg" alt="">
+            <img class="rounded" src="img/deventure.jpg" alt="deventure">
             </div>
             <div class="swiper-slide">
-            <img class="rounded" src="img/img_presentation.jpg" alt="">
+            <img class="rounded" src="img/img_presentation.jpg" alt="img_presentation">
             </div>
             <div class="swiper-slide">
-            <img class="rounded" src="img/interieur.jpg" alt="">
+            <img class="rounded" src="img/interieur.jpg" alt="interieur">
             </div>
             <div class="swiper-slide">
-            <img class="rounded" src="img/deventure.jpg" alt="">
+            <img class="rounded" src="img/deventure.jpg" alt="deventure">
             </div>
         </div>
         <span class="swiper-button-next"></span>
@@ -57,15 +57,34 @@
     </script>
 </section>
 
-<section style="margin: 50px 150px;">
-    <p class="fs-3 text-center">Petite épicerie idéalement située entre le bourg et l’école, à côté de la bibliothèque, offrant un emplacement pratique pour les habitants et les familles. Elle propose un large choix de produits du quotidien, complété par une belle sélection de produits locaux mettant en valeur les producteurs de la région. Vous y trouverez également des articles gourmands et des achats plaisir, pour se faire plaisir ou offrir. Un commerce de proximité chaleureux, alliant praticité, qualité et convivialité.</p>
+<section class="d-md-none m-3 d-flex justify-content-center">
+    <img class="w-100" src="img/img_presentation.jpg" alt="presentation">
+</section>
+
+<section id="textPresentation">
+    <p class="fs-3 text-center d-none d-lg-block">
+        Petite épicerie idéalement située entre le bourg et l’école, à côté de la bibliothèque, offrant un emplacement pratique pour les habitants et les familles. Elle propose un large choix de produits du quotidien, complété par une belle sélection de produits locaux mettant en valeur les producteurs de la région. Vous y trouverez également des articles gourmands et des achats plaisir, pour se faire plaisir ou offrir. Un commerce de proximité chaleureux, alliant praticité, qualité et convivialité.
+    </p>
+    <p class="d-lg-none d-block fs-6 text-center mx-2">
+        Petite épicerie situé entre le bourg et l'école, à coté de la bibliothèque proposant des
+        produits standards, LOCAUX et achats plaisirs
+    </p>
+</section>
+
+<section class="d-md-none m-5" style="width:auto; position: relative; height: 30vh;">
+  <img src="img/deventure.jpg" alt="deventure"
+       class="rounded"
+       style="position: absolute; top: 0; left: 0; width: 72%; z-index: 1;">
+  <img src="img/interieur.jpg" alt="interieur"
+       class="rounded"
+       style="position: absolute; bottom: 0; right: 0; width: 72%; z-index: 2;">
 </section>
 
 <section>
-    <div class="d-flex flex-row justify-content-evenly">
-        <div>
+    <div class="d-flex flex-column flex-md-row justify-content-evenly align-items-center align-items-md-start">
+        <div class="d-flex flex-column align-items-center">
             <h1>HORAIRES</h1>
-            <div class="mt-4">
+            <div class="mt-4 d-flex flex-column align-items-center align-items-md-start">
                 <h4>Lundi</h4>
                 <p>15h30-19h30</p>
                 <h4>Du mardi au vendredi</h4>
@@ -74,7 +93,7 @@
                 <p>9h00-12h00</p>
             </div>
         </div>
-        <div>
+        <div class="d-none d-md-block ">
             <h1>COORDONNÉES</h1>
             <div class="mt-4">
                 <div class="d-flex flex-row align-items-center mb-3">
@@ -94,14 +113,14 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div class="d-flex flex-column align-items-center">
             <h1>SERVICES</h1>
-            <ul class="mt-4">
-            <li class="mb-3">épicerie</li>
-            <li class="mb-3">gaz</li>
-            <li class="mb-3">photocopies</li>
-            <li class="mb-3">dépôt de pain le mercredi</li>
-            <li class="mb-3">colis privé</li>
+            <ul class="mt-lg-4 d-flex flex-column align-items-center align-items-md-start">
+                <li class="mb-3">épicerie</li>
+                <li class="mb-3">gaz</li>
+                <li class="mb-3">photocopies</li>
+                <li class="mb-3">dépôt de pain le mercredi</li>
+                <li class="mb-3">colis privé</li>
             </ul>
         </div>
     </div>

@@ -13,4 +13,8 @@ class CategorieController{
         return array_column($ret,"id");
         
     }
+    static function get_direct_sub_cat($id){
+        $ret = array_values(Categorie::get_direct_sub_cat($id));
+        return $ret;
+    }
 }

@@ -42,3 +42,40 @@ footer a {
 	color: #eee;
 	font-style: none;
 }
+footer > div >a>i{
+	font-size: 4rem;
+}
+footer>div:last-child{
+	margin-right: 5em;
+}
+footer>img{
+	margin-left: 5em;
+}
+header a {
+	color: black;
+	text-decoration: none;
+}
+
+#textPresentation{
+	margin: 50px 150px;
+}
+
+.recherche:hover{
+	cursor: pointer;
+}
+
+#slider{
+    padding: 0 16px;
+}
+
+
+.btn-group:hover>a,
+.btn-group:hover>button,
+.btn-group:hover {
+	background-color: rgb(33, 33, 33) !important;
+}
+
+.dropdown-toggle,.btn-group{
+	border-radius: 0;
+	border: none;
+}
