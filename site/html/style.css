@@ -33,7 +33,7 @@
 
 .card{
 	width: 15vw; 
-	/* height: 20vh; */
+	min-width: 15vw;
 	border-radius: 16px; 
 	border: 1px solid #eee
 }
@@ -43,7 +43,7 @@ footer a {
 	font-style: none;
 }
 footer > div >a>i{
-	font-size: 4rem;
+	font-size: 3rem;
 }
 footer>div:last-child{
 	margin-right: 5em;
@@ -78,4 +78,52 @@ header a {
 .dropdown-toggle,.btn-group{
 	border-radius: 0;
 	border: none;
+}
+
+.badge > img{
+	height: 40px;
+}
+
+.hidden{
+	display: none;
+}
+
+#prod_locaux,#prod_reduc{
+	width: 100%;              
+    overflow-x: auto;         
+    overflow-y: hidden;
+    display: flex;
+    flex-wrap: nowrap;        
+    gap: 1rem;
+	scroll-behavior: smooth;
+	scrollbar-width: none;
+}
+
+img{
+	object-fit: contain;
+}
+
+#prod_locaux::-webkit-scrollbar,#prod_reduc::-webkit-scrollbar {
+	display: none;
+}
+
+#sect_prod_locaux button ,#sect_prod_reduc button {
+	background-color: black;
+	color: white;
+	border-style: none;
+	height: 3em;
+	width: 3em;
+	border-radius: 50px;
+
+}
+
+.card-body> div>p{
+	margin: 0;
+}
+.card-body> div>p:first{
+	font-style: none;
+	font-weight: none;
+}
+.card-body> div>p:last-child{
+	background-color: #BE69FF;
 }

@@ -14,5 +14,6 @@ class ProduitController {
     static function max_prix(){
         return Produit::max_prix()[0]["max"];
     }
+
 }
 ?>

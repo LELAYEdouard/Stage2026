@@ -39,13 +39,10 @@ header>a {
 
 }
 
-img {
+footer img,header img {
     width: 50vw;
 }
 
-.card{
-    width: 35vw;
-}
 
 p{
     font-size: small;
@@ -98,4 +95,69 @@ ul,li{
 }
 #offcanvasBottom .card{
     width: auto;
+}
+img{
+	object-fit: contain;
+}
+
+
+#prod_locaux{
+	width: 100%;              
+    overflow-x: auto;         
+    overflow-y: hidden;
+    display: flex;
+    flex-wrap: nowrap;        
+    gap: 1rem;
+}
+
+img{
+	object-fit: contain;
+}
+.card{
+    width: 40vw;
+	min-width: 40vw;
+	border-radius: 16px; 
+	border: 1px solid #eee
+}
+
+
+
+.hidden{
+	display: none;
+}
+
+#prod_locaux,#prod_reduc{
+	width: 100%;              
+    overflow-x: auto;         
+    overflow-y: hidden;
+    display: flex;
+    flex-wrap: nowrap;        
+    gap: 1rem;
+	scroll-behavior: smooth;
+	scrollbar-width: none;
+}
+
+img{
+	object-fit: contain;
+}
+
+#prod_locaux::-webkit-scrollbar,#prod_reduc::-webkit-scrollbar  {
+	display: none;
+}
+
+#sect_prod_locaux button,#sect_prod_reduc button {
+	display: none;
+}
+
+
+
+.card-body> div>p{
+	margin: 0;
+}
+.card-body> div>p:first{
+	font-style: none;
+	font-weight: none;
+}
+.card-body> div>p:last-child{
+	background-color: #BE69FF;
 }

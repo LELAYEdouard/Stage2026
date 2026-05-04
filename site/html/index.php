@@ -30,11 +30,11 @@ $cat_principales = get_cat()
                 <input class="form-control pe-4" id="recherche_bar" type="search" placeholder="Rechercher un produit">
                 <i class="recherche bi bi-search position-absolute top-50 end-0 translate-middle-y me-2"></i>
             </div>
-            <a href="#" id="openBurger" class="d-md-none">
+            <a href="#" id="openBurger" class="d-lg-none">
                 <i class="bi bi-list fs-1"></i>
             </a>
-            <div id="menuBurger" class="sideBurger d-md-none" >
-                <a id="fermeBurger" class="close">
+            <div id="menuBurger" class="sideBurger d-lg-none" >
+                <a id="fermeBurger" class="close mt-3">
                     <i class="bi bi-x-lg"></i>
                 </a>
                 <ul>

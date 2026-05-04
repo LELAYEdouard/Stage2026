@@ -18,4 +18,5 @@ class Produit{
     static function max_prix(){
         return requete("SELECT max(prix) as max FROM _produit");
     }
+    
 }

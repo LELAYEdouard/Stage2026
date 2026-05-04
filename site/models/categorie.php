@@ -56,4 +56,8 @@ class Categorie{
         SELECT id,nom_categorie FROM subcats WHERE id != :id;",[":id"=> $id]);
                 
     }
+
+    static function get_nom_cat($id){
+        return requete("SELECT nom_categorie FROM _categorie WHERE id = :id",[":id"=> $id]);
+    }
 }
