@@ -16,7 +16,11 @@ class Produit{
     }
 
     static function max_prix(){
-        return requete("SELECT max(prix) as max FROM _produit");
+        return requete("SELECT max(prix) AS max FROM _produit");
+    }
+
+    static function update($update_str,$update_params){
+        requete("UPDATE _produit " . $update_str,$update_params);
     }
     
 }

@@ -8,13 +8,6 @@ CREATE TABLE _compte_admin (
     mdp VARCHAR(80) NOT NULL
 );
 
-CREATE TABLE _reduction (
-
-    id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    date_debut DATE NOT NULL,
-    date_fin DATE NOT NULL,
-    taux_reduction FLOAT NOT NULL
-);
 
 CREATE TABLE _categorie (
 
@@ -34,11 +27,26 @@ CREATE TABLE _produit (
     quantite INTEGER DEFAULT 0,
     url_img VARCHAR(80) DEFAULT "url_pas_image.jpg",
     est_local BOOLEAN DEFAULT 0,
-    id_reduc INTEGER DEFAULT NULL,
     id_categorie INTEGER DEFAULT NULL,
 
-    CONSTRAINT id_reduc_fk_reduc FOREIGN KEY (id_reduc) REFERENCES _reduction(id),
     CONSTRAINT id_categorie_fk_categorie FOREIGN KEY (id_categorie) REFERENCES _categorie(id)
+);
+
+CREATE TABLE _reduction (
+
+    id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    date_debut DATE NOT NULL,
+    date_fin DATE NOT NULL,
+    taux_reduction FLOAT NOT NULL,
+    id_prod INTEGER NOT NULL,
+
+    CONSTRAINT id_reduc_fk_reduc FOREIGN KEY (id_prod) REFERENCES _produit(id)
+);
+
+CREATE VIEW promo_jour AS (
+	SELECT * FROM _reduction
+	WHERE date_debut <= CURRENT_DATE
+	AND date_fin >= CURRENT_DATE
 );
 
 CREATE OR REPLACE VIEW all_produits AS
@@ -50,7 +58,6 @@ SELECT
     p.quantite,
     p.url_img,
     p.est_local,
-    p.id_reduc,
     p.id_categorie,
     r.date_debut,
     r.date_fin,
@@ -60,7 +67,7 @@ SELECT
     c.nom_categorie
 FROM _produit p
 LEFT JOIN _categorie c ON p.id_categorie = c.id
-LEFT JOIN _reduction r ON p.id_reduc = r.id;
+LEFT JOIN promo_jour r ON p.id = r.id_prod;
 
 
 INSERT INTO _categorie (nom_categorie, id_categorie_sup) VALUES

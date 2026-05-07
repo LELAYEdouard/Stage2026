@@ -85,7 +85,7 @@ header a {
 }
 
 .hidden{
-	display: none;
+	display: none !important;
 }
 
 #prod_locaux,#prod_reduc{
