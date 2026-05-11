@@ -1,3 +1,6 @@
+<?php 
+$all_cat = CategorieController::get_all_cat();
+?>
 <section id="overlay_reduc" class="d-flex action hidden">
     <div id="contenu_reduc">
         <i class="bi bi-x-lg"></i>
@@ -19,12 +22,19 @@
         <i class="bi bi-x-lg"></i>
         <h2>Modifier</h2>
 
-        <form action="admin.php?modif=1" method="post" onsubmit="return valider_modif();">
+        <form action="admin.php?modif=1" method="post" enctype="multipart/form-data" onsubmit="return valider_modif();">
             <input type="hidden" name="id" value="-1">
             <input type="text" name="reference">
             <input type="text" name="nom">
             <input type="text" name="prix">
             <input type="text" name="quantite">
+            <select name="cat">
+                <?php foreach($all_cat as $cle => $val){ ?>
+                <option value="<?= htmlentities($val["id"])?>" name="<?= htmlentities($val["nom_categorie"])?>"><?= htmlentities($val["nom_categorie"])?></option>
+                <?php } ?>
+            </select>
+            <img id="image_visu" name="img" src=""/>
+            <input type="file" id="imgInp" name="image"/>
             <input type="checkbox" name="local">
             <input type="submit" value="Valider">
         </form>
@@ -101,5 +111,13 @@
             document.getElementById("overlay_reduc").classList.add("hidden")
         })
 
+
+        //preview img changé
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files
+            if (file) {
+                image_visu.src = URL.createObjectURL(file)
+            }
+        }
         
     </script>

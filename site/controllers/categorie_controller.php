@@ -21,4 +21,9 @@ class CategorieController{
     static function get_nom_cat($id){
         return Categorie::get_nom_cat($id)[0]["nom_categorie"];
     }
+
+    static function get_all_cat(){
+        $ret = array_values(Categorie::get_all_cat());
+        return $ret;
+    }
 }

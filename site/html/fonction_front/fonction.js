@@ -15,7 +15,7 @@ function afficher_produits(json_prod,id_div,admin){
         if(admin){
             card.setAttribute(
                 'onclick',
-                `click_produit(${prod.id},${prod.prix},${prod.reference}, ${JSON.stringify(prod.nom)}, ${prod.quantite},${prod.est_local},${prod.taux_reduction},${prod.prix_reduit}, event)`
+                `click_produit(${prod.id},${prod.prix},${prod.reference}, ${JSON.stringify(prod.nom)}, ${prod.quantite},${prod.est_local},${prod.taux_reduction},${prod.prix_reduit},"${prod.nom_categorie}","${prod.url_img}", event)`
             );        
         }
 
@@ -93,7 +93,7 @@ function filtrer_cat(json_prod, id_cat, id_cat_sub = []) {
 }
 
 //fonction pour modifier et ajouter reduction lors du clic sur un produit
-function click_produit(id,prix,ref,nom,qte,local,taux_reduc,prix_reduit,event){
+function click_produit(id,prix,ref,nom,qte,local,taux_reduc,prix_reduit,cat,url,event){
     let popup_prod = document.getElementById("overlay")
     let content = document.getElementById("contenu")
     
@@ -102,6 +102,7 @@ function click_produit(id,prix,ref,nom,qte,local,taux_reduc,prix_reduit,event){
     document.querySelector("#contenu_modif input[name=prix]").value = ""
     document.querySelector("#contenu_modif input[name=quantite]").value = ""
     document.querySelector("#contenu_modif input[name=reference]").value = ""
+    document.querySelector("#contenu_modif img").src = ""
     document.querySelector("#contenu_modif input[name=local]").checked = false
     
     //cache les erreur s'il en a eu
@@ -142,6 +143,8 @@ function click_produit(id,prix,ref,nom,qte,local,taux_reduc,prix_reduit,event){
         document.querySelector("#contenu_modif input[name=prix]").placeholder = prix
         document.querySelector("#contenu_modif input[name=quantite]").placeholder = qte
         document.querySelector("#contenu_modif input[name=reference]").placeholder = ref
+        document.querySelector("#contenu_modif img").src = "img/"+url
+        document.querySelector(`#contenu_modif option[name="${cat}"`).selected = true
         
         if(local == 1){
             document.querySelector("#contenu_modif input[name=local]").checked = true

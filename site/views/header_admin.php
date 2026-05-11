@@ -1,3 +1,7 @@
+<?php 
+require_once __DIR__ ."/../controllers/categorie_controller.php";
+
+?>
 <header class="sticky-top">
     <!-- header ordinateur -->
     <div class="bg-black d-flex flex-lg-row justify-content-evenly align-items-center py-2 flex-wrap">

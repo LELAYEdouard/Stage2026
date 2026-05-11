@@ -51,3 +51,8 @@ header button{
 .bi-x-lg:hover{
     cursor: pointer;
 }
+
+
+form img{
+    width: 150px;
+}

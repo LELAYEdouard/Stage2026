@@ -15,7 +15,7 @@ class ProduitController {
         return Produit::max_prix()[0]["max"];
     }
 
-    static function update($nom=null,$reference=null,$prix=null,$quantite=null,$local=null,$id=null){
+    static function update($nom=null,$reference=null,$prix=null,$quantite=null,$local=null,$url=null,$cat=null,$id=null){
         $str = "SET ";
         $str_update=[] ;
         $params = [];
@@ -36,7 +36,14 @@ class ProduitController {
             $str_update[] = "quantite = :quantite ";
             $params[":quantite"] = $quantite;
         }
-        
+        if($url){
+            $str_update[] = "url_img = :url_img ";
+            $params[":url_img"] = $url;
+        }
+        if($cat){
+            $str_update[] = "id_categorie = :id_categorie ";
+            $params[":id_categorie"] = $cat;
+        }
         $str_update[] = "est_local = :local ";
         $params[":local"] = $local;
         
