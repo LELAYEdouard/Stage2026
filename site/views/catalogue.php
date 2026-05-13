@@ -116,7 +116,7 @@ require_once __DIR__ . "/../controllers/produit_controller.php";
     let filtre_nom
 
     let affichage_locaux = produits.filter(elt => { return elt.est_local == 1; })
-    let affichage_reduc = produits.filter(elt => { return elt.id_reduc != null; })
+    let affichage_reduc = produits.filter(elt => { return elt.prix_reduit != null; })
 
     //filtre par categorie
     <?php if(isset($_GET['cat'])){?>
@@ -125,7 +125,7 @@ require_once __DIR__ . "/../controllers/produit_controller.php";
     if(categorie != "all"){
         affichage = filtrer_cat(produits,categorie,<?php echo json_encode(CategorieController::get_sub_cat($_GET['cat']));?>)  
         affichage_locaux = affichage.filter(elt => { return elt.est_local == 1; }) 
-        affichage_reduc = affichage.filter(elt => { return elt.id_reduc != null; })
+        affichage_reduc = affichage.filter(elt => { return elt.prix_reduit  != null; })
     }
     <?php }?>  
 

@@ -61,6 +61,7 @@ SELECT
     p.id_categorie,
     r.date_debut,
     r.date_fin,
+    r.id_reduc,
     ROUND(r.taux_reduction*100) AS taux_reduction,
     ROUND(p.prix * (1 - r.taux_reduction),2) AS prix_reduit,
     c.id_categorie_sup,

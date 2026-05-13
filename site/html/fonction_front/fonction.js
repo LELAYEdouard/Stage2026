@@ -15,7 +15,7 @@ function afficher_produits(json_prod,id_div,admin){
         if(admin){
             card.setAttribute(
                 'onclick',
-                `click_produit(${prod.id},${prod.prix},${prod.reference}, ${JSON.stringify(prod.nom)}, ${prod.quantite},${prod.est_local},${prod.taux_reduction},${prod.prix_reduit},"${prod.nom_categorie}","${prod.url_img}", event)`
+                `click_produit(${prod.id},${prod.prix},${prod.reference}, ${JSON.stringify(prod.nom)}, ${prod.quantite},${prod.est_local},${prod.taux_reduction},${prod.prix_reduit},"${prod.nom_categorie}","${prod.url_img}","${prod.date_debut}","${prod.date_fin}",${prod.id_reduc} ,event)`
             );        
         }
 
@@ -23,7 +23,7 @@ function afficher_produits(json_prod,id_div,admin){
         wrapper.classList.add("position-relative")
 
         const img = document.createElement("img")
-        img.src = "img/"+prod.url_img
+        img.src = "img/prod/"+prod.url_img
         img.alt = prod.nom
         img.classList.add("card-img-top", "rounded", "mb-2")
 
@@ -93,7 +93,7 @@ function filtrer_cat(json_prod, id_cat, id_cat_sub = []) {
 }
 
 //fonction pour modifier et ajouter reduction lors du clic sur un produit
-function click_produit(id,prix,ref,nom,qte,local,taux_reduc,prix_reduit,cat,url,event){
+function click_produit(id,prix,ref,nom,qte,local,taux_reduc,prix_reduit,cat,url,date_debut,date_fin,id_reduc,event){
     let popup_prod = document.getElementById("overlay")
     let content = document.getElementById("contenu")
     
@@ -107,12 +107,15 @@ function click_produit(id,prix,ref,nom,qte,local,taux_reduc,prix_reduit,cat,url,
     
     //cache les erreur s'il en a eu
     document.querySelector("#contenu_modif .alert").classList.add("hidden")
+    document.querySelector("#contenu_reduc .alert").classList.add("hidden")
 
     //change le nom du bouton en fonction de la presence ou non d'une réduction
     if(taux_reduc){
         document.querySelector("#contenu button[name=reduction]").innerHTML = "Modifier réduction"
+        document.querySelector("#contenu_reduc input[name=action]").value = "modif"
     }else{
         document.querySelector("#contenu button[name=reduction]").innerHTML = "Ajouter Réduction"
+        document.querySelector("#contenu_reduc input[name=action]").value = "ajout"
     }
 
     //si on clique trop a droite de l'ecran
@@ -128,9 +131,11 @@ function click_produit(id,prix,ref,nom,qte,local,taux_reduc,prix_reduit,cat,url,
     popup_prod.classList.remove("hidden")
     
     document.querySelector("#contenu>h4").innerHTML = nom
+    document.querySelector("a[name=liste]").href = `admin.php?liste_reduc=1&produit=${id}`
 
     let popup_modif = document.getElementById("overlay_modif")
     let popup_reduc = document.getElementById("overlay_reduc")
+    let popup_liste = document.getElementById("overlay_liste")
 
     //ouverture modification produit
     document.querySelector("button[name=modifier]").addEventListener('click',()=>{
@@ -143,7 +148,7 @@ function click_produit(id,prix,ref,nom,qte,local,taux_reduc,prix_reduit,cat,url,
         document.querySelector("#contenu_modif input[name=prix]").placeholder = prix
         document.querySelector("#contenu_modif input[name=quantite]").placeholder = qte
         document.querySelector("#contenu_modif input[name=reference]").placeholder = ref
-        document.querySelector("#contenu_modif img").src = "img/"+url
+        document.querySelector("#contenu_modif img").src = "img/prod/"+url
         document.querySelector(`#contenu_modif option[name="${cat}"`).selected = true
         
         if(local == 1){
@@ -157,13 +162,38 @@ function click_produit(id,prix,ref,nom,qte,local,taux_reduc,prix_reduit,cat,url,
     document.querySelector("button[name=reduction]").addEventListener('click',()=>{
         
         popup_prod.classList.add("hidden")
-        popup_reduc.classList.remove("hidden")
+        click_modif(id,id_reduc,prix,taux_reduc,prix_reduit,date_debut,date_fin)
 
-        
     })
+
 }
+
+function click_modif(id,id_reduc,prix,taux_reduc,prix_reduit,date_debut,date_fin){
+    //vider input reduction
+    document.querySelector("#contenu_reduc input[name=taux]").placeholder = ""
+    document.querySelector("#contenu_reduc input[name=taux]").value = ""
+    document.querySelector("#contenu_reduc label[name=prix_base]").innerHTML = ""
+    document.querySelector("#contenu_reduc input[name=prix_reduit]").placeholder = ""
+    document.querySelector("#contenu_reduc input[name=date_deb]").value = ""
+    document.querySelector("#contenu_reduc input[name=date_fin]").value = ""
+    
+    document.getElementById("overlay_reduc").classList.remove("hidden")
+    
+    document.querySelector("#contenu_reduc input[name=id]").value = id
+    document.querySelector("#contenu_reduc label[name=prix_base]").innerHTML = prix
+
+    if(taux_reduc){
+        document.querySelector("#contenu_reduc input[name=id_reduc]").value = id_reduc
+        document.querySelector("#contenu_reduc input[name=taux]").placeholder = taux_reduc
+        document.querySelector("#contenu_reduc input[name=prix_reduit]").placeholder = prix_reduit
+        document.querySelector("#contenu_reduc input[name=date_deb]").value = date_debut
+        document.querySelector("#contenu_reduc input[name=date_fin]").value = date_fin
+    }
+}
+
 function valider_reduc(){
-    if(1){ 
+    
+    if(check_reduc()){ 
         document.querySelector("#contenu_reduc .alert").classList.remove("hidden")
         return false;
     }
@@ -177,6 +207,25 @@ function valider_modif(){
     }
 
     return true;
+}
+
+function check_reduc(){
+    
+    let taux = document.querySelector("#contenu_reduc input[name=taux]").value
+    let date_deb = document.querySelector("#contenu_reduc input[name=date_deb]").value
+    let date_fin = document.querySelector("#contenu_reduc input[name=date_fin]").value 
+    
+    return ( check_taux(taux)) || (check_date(date_deb,date_fin))
+
+}
+
+function check_date(debut,fin){
+    return debut == "" || fin == "" || fin < debut ;
+}
+
+function check_taux(taux){
+    let reg = new RegExp("^([0-9]|([1-9][0-9])|100)$", "gi")
+    return !reg.test(taux) && taux != "";
 }
 
 function check_modif(){

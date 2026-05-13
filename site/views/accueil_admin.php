@@ -1,14 +1,20 @@
 <?php 
 $all_cat = CategorieController::get_all_cat();
 ?>
+<!-- reduction -->
 <section id="overlay_reduc" class="d-flex action hidden">
     <div id="contenu_reduc">
         <i class="bi bi-x-lg"></i>
         <h2>Réduction</h2>
-
-        <form action="admin.php?reduc=1" method="post" onsubmit="return valider_reduc();">
+        <form action="admin.php?action_reduc=1" method="post" onsubmit="return valider_reduc();">
             <input type="hidden" name="id" value="-1">
-            
+            <input type="hidden" name="id_reduc" value="-1">
+            <input type="hidden" name="action" value="ajout">
+            <input type="date" name="date_deb">
+            <input type="date" name="date_fin">
+            <label name="prix_base"></label>
+            <input type="text" name="taux" value="">
+            <input name="prix_reduit" readonly="readonly">
             <input type="submit" value="Valider">
         </form>
         <div class="alert alert-primary hidden" role="alert">
@@ -17,6 +23,7 @@ $all_cat = CategorieController::get_all_cat();
     </div>
 </section>
 
+<!-- modifier produit -->
 <section id="overlay_modif" class="d-flex action hidden">
     <div id="contenu_modif">
         <i class="bi bi-x-lg"></i>
@@ -50,6 +57,7 @@ $all_cat = CategorieController::get_all_cat();
 
         <button class="btn btn-dark" name="modifier">Modifier</button>
         <button class="btn btn-dark" name="reduction">Réduction</button>
+        <a href="admin.php" class="btn btn-dark" name="liste">Liste des Réductions</a>
 
     </div>
 </section>
@@ -119,5 +127,18 @@ $all_cat = CategorieController::get_all_cat();
                 image_visu.src = URL.createObjectURL(file)
             }
         }
+
+        //calcule le prix réduit 
+        document.querySelector("#contenu_reduc input[name=taux]").addEventListener('input',()=>{
+            let taux= document.querySelector("#contenu_reduc input[name=taux]").value
+            if(!check_taux(taux) && taux != ""){
+                console.log(taux)
+                document.querySelector("#contenu_reduc input[name=prix_reduit]").value = Math.round(document.querySelector("#contenu_reduc label[name=prix_base]").innerHTML * (1 - taux/100) * 100)/100
+            }else{
+                
+                document.querySelector("#contenu_reduc input[name=prix_reduit]").value=""
+            }
+        })
+
         
     </script>

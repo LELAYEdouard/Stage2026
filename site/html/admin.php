@@ -2,8 +2,12 @@
 session_start();
 require_once __DIR__ ."/../fonctions_back/db.php";
 if(isset($_GET['modif'])){
-    require_once __DIR__ . '/../views/modif_prod.php'; 
+    require_once __DIR__ . '/../script/modif_prod.php'; 
 }
+else if(isset($_GET['action_reduc'])){
+    require_once __DIR__ . '/../script/reduction.php'; 
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +38,9 @@ if(isset($_GET['modif'])){
         else if(isset($_GET['action'])){
             require_once __DIR__ . '/../views/admin_action.php'; 
         }
-        
+        else if(isset($_GET['liste_reduc']) && isset($_GET['produit'])){
+            require_once __DIR__ . '/../views/liste_reduc.php'; 
+        }
         ?>
     </main>
     <?php require_once __DIR__ . "/../views/footer.php"?>
