@@ -9,6 +9,10 @@ if(isset($_POST) && isset($_POST['id']) && $_POST['id'] != "-1"){
     else if(isset($_POST['action']) && $_POST['action']=="modif"){
         ReductionController::update(id:$_POST['id_reduc'],id_prod:$_POST['id'],date_deb:$_POST["date_deb"],date_fin:$_POST["date_fin"],taux:$_POST["taux"]);
     }
+    else if(isset($_POST['action']) && $_POST['action']=="supprimer"){
+        ReductionController::delete($_POST['id']);
+    }
+    
    
     header('Location: admin.php');
 }

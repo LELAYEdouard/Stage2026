@@ -1,6 +1,3 @@
-<?php 
-$all_cat = CategorieController::get_all_cat();
-?>
 <!-- reduction -->
 <section id="overlay_reduc" class="d-flex action hidden">
     <div id="contenu_reduc">
@@ -29,8 +26,9 @@ $all_cat = CategorieController::get_all_cat();
         <i class="bi bi-x-lg"></i>
         <h2>Modifier</h2>
 
-        <form action="admin.php?modif=1" method="post" enctype="multipart/form-data" onsubmit="return valider_modif();">
+        <form action="admin.php?action_prod=1" method="post" enctype="multipart/form-data" onsubmit="return valider_modif();">
             <input type="hidden" name="id" value="-1">
+            <input type="hidden" name="action" value="modif">
             <input type="text" name="reference">
             <input type="text" name="nom">
             <input type="text" name="prix">

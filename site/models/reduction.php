@@ -11,7 +11,12 @@ class Reduction {
     static function update($str,$params){
         requete("UPDATE _reduction " .$str,$params);
     }
+
     static function get($id){
         return requete("SELECT r.*,p.prix, round(p.prix * (1-r.taux_reduction),2) as prix_reduit FROM _reduction as r INNER JOIN _produit as p ON r.id_prod = p.id WHERE id_prod = :id ORDER BY date_debut DESC",[":id"=> $id]);
+    }
+
+    static function delete($id){
+        requete("DELETE FROM _reduction WHERE id= :id",[":id" => $id]);
     }
 }

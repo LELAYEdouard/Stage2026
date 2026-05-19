@@ -7,7 +7,7 @@ $lst = ReductionController::get($_GET['produit']);
     <div id="contenu_reduc">
         <i class="bi bi-x-lg"></i>
         <h2>Réduction</h2>
-        <form action="admin.php?reduc=1" method="post" onsubmit="return valider_reduc();">
+        <form action="admin.php?action_reduc=1" method="post" onsubmit="return valider_reduc();">
             <input type="hidden" name="id" value="-1">
             <input type="hidden" name="id_reduc" value="-1">
             <input type="hidden" name="action" value="modif">
@@ -38,7 +38,11 @@ $lst = ReductionController::get($_GET['produit']);
                 <h4>Taux de Réduction</h4>
                 <p>-<?= $val["taux_reduction"]*100?>%</p>
                 <button class="btn btn-dark" name="modifier" onclick=click_modif(<?= $_GET['produit'] ?>,<?= $val['id'] ?>,<?= $val['prix'] ?>,<?= $val['taux_reduction']*100 ?>,<?= $val['prix_reduit'] ?>,<?= '"' . $val['date_debut'] . '"'?>,<?='"' .  $val['date_fin']  . '"'?>)>Modifier</button>
-                <a href="admin.php?supp=1&reduc=<?= $val['id'] ?>" class="btn btn-danger">Supprimer</a>
+                <form action="admin.php?action_reduc=1" method="post">
+                    <input type="hidden" name="id" value="<?= $val['id'] ?>">
+                    <input type="hidden" name="action" value="supprimer">
+                    <input type="submit" class="btn btn-danger" value="Supprimer">
+                </form>
             </div>
             <?php } ?>
         </div>

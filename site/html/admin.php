@@ -1,13 +1,13 @@
 <?php
 session_start();
+
 require_once __DIR__ ."/../fonctions_back/db.php";
-if(isset($_GET['modif'])){
-    require_once __DIR__ . '/../script/modif_prod.php'; 
+if(isset($_GET['action_prod'])){
+    require_once __DIR__ . '/../script/action_prod.php'; 
 }
 else if(isset($_GET['action_reduc'])){
-    require_once __DIR__ . '/../script/reduction.php'; 
+    require_once __DIR__ . '/../script/action_reduction.php'; 
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +30,9 @@ else if(isset($_GET['action_reduc'])){
 </head>
 <body>
     <?php require_once __DIR__ . "/../views/header_admin.php"?>
+    <?php 
+        $all_cat = CategorieController::get_all_cat();
+    ?>
     <main>
         <?php 
         if(empty($_GET)){
@@ -40,6 +43,9 @@ else if(isset($_GET['action_reduc'])){
         }
         else if(isset($_GET['liste_reduc']) && isset($_GET['produit'])){
             require_once __DIR__ . '/../views/liste_reduc.php'; 
+        }
+        else if(isset($_GET['ajout_produit']) && isset($_GET['ajout_produit'])){
+            require_once __DIR__ . '/../views/ajout_produit.php'; 
         }
         ?>
     </main>

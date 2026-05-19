@@ -55,5 +55,9 @@ class ProduitController {
         
     }
 
+    static function create($ref=null,$nom=null,$prix=null,$local=null,$url_img=null,$id_cat=null,$qte=null){
+        Produit::create($ref,$nom,$prix,$local,$url_img,$id_cat,$qte);
+    }
+
 }
 ?>

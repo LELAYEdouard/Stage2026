@@ -41,4 +41,8 @@ class ReductionController {
     static function get($id){
         return Reduction::get($id);
     }
+
+    static function delete($id){
+        Reduction::delete($id);
+    }
 }

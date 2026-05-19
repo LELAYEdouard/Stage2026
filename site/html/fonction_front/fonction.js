@@ -209,6 +209,15 @@ function valider_modif(){
     return true;
 }
 
+function valider_ajout(){
+    if(check_ajout()){ 
+        document.querySelector(".alert").classList.remove("hidden")
+        return false;
+    }
+    console.log("oui")
+    return true;
+}
+
 function check_reduc(){
     
     let taux = document.querySelector("#contenu_reduc input[name=taux]").value
@@ -235,9 +244,22 @@ function check_modif(){
     let qte = document.querySelector("#contenu_modif input[name=quantite]").value 
     let ref = document.querySelector("#contenu_modif input[name=reference]").value
     
-    return ( check_nom(nom)) || (check_prix(prix)) || (check_quantite(qte))|| ( check_prix(ref))
+    return ( check_nom(nom) ) || (check_prix(prix)) || (check_quantite(qte))|| ( check_ref(ref))
 
 }
+function check_ajout(){
+    
+    let nom = document.querySelector(" input[name=nom]").value
+    let prix = document.querySelector("input[name=prix]").value
+    let qte = document.querySelector(" input[name=qte]").value 
+    let ref = document.querySelector(" input[name=reference]").value
+    console.log(nom,prix,qte,ref)
+    console.log( check_nom(nom) || nom =="") && (check_prix(prix)|| prix =="") && (check_quantite(qte))&& ( check_ref(ref)||ref =="")
+
+    return ( check_nom(nom) || nom =="") || (check_prix(prix)|| prix =="") || (check_quantite(qte))|| ( check_ref(ref)||ref =="")
+
+}
+
 
 function check_nom(nom){
     return nom.length > 50;
@@ -248,7 +270,7 @@ function check_prix(prix){
     return reg.test(prix);
 }
 
-function check_prix(ref){
+function check_ref(ref){
     let reg = new RegExp("[^0-9]+", "gi")
     return reg.test(ref);
 }
