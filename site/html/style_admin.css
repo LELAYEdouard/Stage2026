@@ -30,13 +30,13 @@ header button{
     z-index: 1000;
 }
 
-#contenu_modif,#contenu_reduc,#contenu_liste{
+#contenu_modif,#contenu_reduc,#contenu_liste,#contenu_supp{
     margin: auto;
     width: 500px;
     position: relative;
 }
 
-#overlay_modif, #overlay_reduc, #overlay_liste{
+#overlay_modif, #overlay_reduc, #overlay_liste,#overlay_supp{
     background-color: rgba(0, 0, 0, 0.5);
 }
 

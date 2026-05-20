@@ -36,6 +36,9 @@ if(isset($_POST) && ((isset($_POST['id']) && $_POST['id'] != "-1") || (isset($_P
             }
         }
     }
+    else if(isset($_POST['action']) && $_POST['action']=="supprimer"){
+        ProduitController::delete(id:$_POST['id']);
+    }
     header('Location: admin.php');
 }
 else{

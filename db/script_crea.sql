@@ -26,6 +26,7 @@ CREATE TABLE _produit (
     url_img VARCHAR(80) DEFAULT "url_pas_image.jpg",
     est_local BOOLEAN DEFAULT 0,
     id_categorie INTEGER DEFAULT NULL,
+    en_ligne INTEGER DEFAULT 1,
 
     CONSTRAINT id_categorie_fk_categorie FOREIGN KEY (id_categorie) REFERENCES _categorie(id)
 );
@@ -66,7 +67,8 @@ SELECT
     c.nom_categorie
 FROM _produit p
 LEFT JOIN _categorie c ON p.id_categorie = c.id
-LEFT JOIN promo_jour r ON p.id = r.id_prod;
+LEFT JOIN promo_jour r ON p.id = r.id_prod
+WHERE p.en_ligne =1;
 
 
 INSERT INTO _categorie (nom_categorie, id_categorie_sup) VALUES

@@ -1,3 +1,18 @@
+<!-- suppression -->
+<section id="overlay_supp" class="d-flex action hidden">
+    <div id="contenu_supp">
+        <h2>Suppression</h2>
+        <article class="d-flex">
+            <form action="admin.php?action_prod=1" method="post">
+                <input type="hidden" name="id" value="-1">
+                <input type="hidden" name="action" value="supprimer">
+                <input type="submit" class="btn btn-danger" value="Valider">
+            </form>
+            <button name="annuler" class="btn btn-secondary">Annuler</button>
+        </article>
+    </div>
+</section>
+
 <!-- reduction -->
 <section id="overlay_reduc" class="d-flex action hidden">
     <div id="contenu_reduc">
@@ -56,6 +71,8 @@
         <button class="btn btn-dark" name="modifier">Modifier</button>
         <button class="btn btn-dark" name="reduction">Réduction</button>
         <a href="admin.php" class="btn btn-dark" name="liste">Liste des Réductions</a>
+        
+        <button class="btn btn-danger" name="supprimer">Supprimer</button>
 
     </div>
 </section>
@@ -117,6 +134,14 @@
             document.getElementById("overlay_reduc").classList.add("hidden")
         })
 
+        document.getElementById("contenu_supp").addEventListener('click',event=> {event.stopPropagation()})
+        document.getElementById("overlay_supp").addEventListener('click',()=>{
+            document.getElementById("overlay_supp").classList.add("hidden")
+        })
+
+        document.querySelector("#contenu_supp button[name=annuler]").addEventListener('click',()=>{
+            document.getElementById("overlay_supp").classList.add("hidden")
+        })
 
         //preview img changé
         imgInp.onchange = evt => {

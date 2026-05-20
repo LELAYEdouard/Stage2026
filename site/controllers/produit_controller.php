@@ -59,5 +59,8 @@ class ProduitController {
         Produit::create($ref,$nom,$prix,$local,$url_img,$id_cat,$qte);
     }
 
+    static function delete($id){
+        Produit::delete($id);
+    }
 }
 ?>

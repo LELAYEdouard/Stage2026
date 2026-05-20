@@ -163,6 +163,7 @@ function click_produit(id,prix,ref,nom,qte,local,taux_reduc,prix_reduit,cat,url,
     let popup_modif = document.getElementById("overlay_modif")
     let popup_reduc = document.getElementById("overlay_reduc")
     let popup_liste = document.getElementById("overlay_liste")
+    let popup_supp = document.getElementById("overlay_supp")
 
     //ouverture modification produit
     document.querySelector("button[name=modifier]").addEventListener('click',()=>{
@@ -190,6 +191,15 @@ function click_produit(id,prix,ref,nom,qte,local,taux_reduc,prix_reduit,cat,url,
         
         popup_prod.classList.add("hidden")
         click_modif(id,id_reduc,prix,taux_reduc,prix_reduit,date_debut,date_fin)
+
+    })
+
+    document.querySelector("button[name=supprimer]").addEventListener('click',()=>{
+        
+        popup_prod.classList.add("hidden")
+        popup_supp.classList.remove("hidden")
+
+        document.querySelector("#contenu_supp input[name=id]").value = id
 
     })
 

@@ -34,5 +34,9 @@ class Produit{
         
         }
     }
+
+    static function delete($id){
+        requete("UPDATE _produit SET en_ligne = 0 WHERE id = :id",[':id'=> $id]);
+    }
     
 }
