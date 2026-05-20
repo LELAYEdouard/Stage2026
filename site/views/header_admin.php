@@ -8,10 +8,14 @@ require_once __DIR__ ."/../controllers/categorie_controller.php";
         <a href="/admin.php">
             <img class="positon-centered" src="img/banniere.jpg" alt="">
         </a>
-        <div class="position-relative order-3 order-lg-2 mt-3 mt-lg-0">
+        <div class="position-relative  order-lg-2 mt-3 mt-lg-0">
             <input class="form-control pe-4" id="recherche_bar" type="search" placeholder="Rechercher un produit">
             <i class="recherche bi bi-search position-absolute top-50 end-0 translate-middle-y me-2"></i>
         </div>
+
+        <a href="admin.php?deconnecter=1" class="order-3">
+            <i class="bi bi-box-arrow-right text-white"></i>
+        </a>
     </div>
 
     <div class="d-none d-lg-flex flex-row justify-content-evenly align-items-center bg-black">

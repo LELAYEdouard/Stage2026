@@ -35,3 +35,8 @@ function get_cat(){
     
     return $res;
 }
+
+function connexion($mail,$mdp){
+    $mdp_hash=requete("SELECT mdp from _compte_admin where mail = :mail",[':mail'=>$mail])[0]['mdp'];
+    return password_verify($mdp->getValue(),$mdp_hash);
+}

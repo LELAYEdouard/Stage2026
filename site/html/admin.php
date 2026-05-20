@@ -2,11 +2,20 @@
 session_start();
 
 require_once __DIR__ ."/../fonctions_back/db.php";
-if(isset($_GET['action_prod'])){
-    require_once __DIR__ . '/../script/action_prod.php'; 
-}
-else if(isset($_GET['action_reduc'])){
-    require_once __DIR__ . '/../script/action_reduction.php'; 
+if(!empty($_SESSION)){
+    if(isset($_GET['action_prod'])){
+        require_once __DIR__ . '/../script/action_prod.php'; 
+    }
+    else if(isset($_GET['action_reduc'])){
+        require_once __DIR__ . '/../script/action_reduction.php'; 
+    }
+    else if(isset($_GET['deconnecter'])){
+        require_once __DIR__ . '/../script/deconnecter.php'; 
+    }
+}else{
+    if(isset($_GET['connecter'])){
+        require_once __DIR__ . '/../script/connecter.php'; 
+    }
 }
 ?>
 
@@ -35,21 +44,28 @@ else if(isset($_GET['action_reduc'])){
     ?>
     <main>
         <?php 
-        if(empty($_GET)){
-            require_once __DIR__ . '/../views/accueil_admin.php'; 
+        if(!empty($_SESSION)){
+            if(empty($_GET)){
+                require_once __DIR__ . '/../views/accueil_admin.php'; 
+            }
+            else if(isset($_GET['action'])){
+                require_once __DIR__ . '/../views/admin_action.php'; 
+            }
+            else if(isset($_GET['liste_reduc']) && isset($_GET['produit'])){
+                require_once __DIR__ . '/../views/liste_reduc.php'; 
+            }
+            else if(isset($_GET['ajout_produit']) && isset($_GET['ajout_produit'])){
+                require_once __DIR__ . '/../views/ajout_produit.php'; 
+            }
+            else if(isset($_GET['stock'])){
+                require_once __DIR__ . '/../views/liste_stock.php';
+            }
         }
-        else if(isset($_GET['action'])){
-            require_once __DIR__ . '/../views/admin_action.php'; 
-        }
-        else if(isset($_GET['liste_reduc']) && isset($_GET['produit'])){
-            require_once __DIR__ . '/../views/liste_reduc.php'; 
-        }
-        else if(isset($_GET['ajout_produit']) && isset($_GET['ajout_produit'])){
-            require_once __DIR__ . '/../views/ajout_produit.php'; 
+        else{
+            require_once __DIR__ . '/../views/connexion.php'; 
         }
         ?>
     </main>
     <?php require_once __DIR__ . "/../views/footer.php"?>
-    
 </body>
 </html>
