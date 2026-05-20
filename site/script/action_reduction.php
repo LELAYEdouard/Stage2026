@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ ."/../controllers/reduction_controller.php";
 
 if(isset($_POST) && isset($_POST['id']) && $_POST['id'] != "-1"){
     

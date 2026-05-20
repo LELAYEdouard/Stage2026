@@ -83,8 +83,35 @@ function afficher_produits(json_prod,id_div,admin){
 
 }
 
-function vider_produit(){
-    document.getElementById("catalogue").replaceChildren()
+//affiche les produit dans un element pour pourvoir modifier leur stock
+function afficher_produits_stock(json_prod,id_div){
+
+    const liste = document.getElementById(id_div)
+    
+    for(const prod of json_prod){
+        const div = document.createElement("div")
+            
+        div.innerHTML= `<div class="stock border border-dark rounded d-flex">
+                            <p>${prod.reference}</p>
+                            <p>${prod.nom}</p>
+                            <form action="admin.php?update_stock=1" method="post">
+                                <label for="nb">Stock
+                                    <span class="aide" title="' + ' devant pour ajouter une valeur\n' - ' devant pour retirer une valeur\net appuyez sur entrée pour valider\nex: '+52' ajoute 52 à la quantité dans le stock">?</span>
+                                </label>
+                                <input type="hidden" name="id" value=${prod.id}>
+                                <input type="text" size="8" name="new_qte" value=${prod.quantite}>
+                                <input type="text" size="8" name="old_qte" value=${prod.quantite} hidden>
+                                <input type="submit" class="btn btn-dark" value="Valider">
+                            </form>
+                        </div>`
+
+        liste.appendChild(div)
+    }
+}
+
+
+function vider_produit(id){
+    document.getElementById(id).replaceChildren()
 }
 
 function filtrer_cat(json_prod, id_cat, id_cat_sub = []) {

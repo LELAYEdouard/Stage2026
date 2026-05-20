@@ -2,6 +2,9 @@
 session_start();
 
 require_once __DIR__ ."/../fonctions_back/db.php";
+require_once __DIR__ ."/../controllers/produit_controller.php";
+require_once __DIR__ ."/../controllers/reduction_controller.php";
+
 if(!empty($_SESSION)){
     if(isset($_GET['action_prod'])){
         require_once __DIR__ . '/../script/action_prod.php'; 
@@ -11,6 +14,9 @@ if(!empty($_SESSION)){
     }
     else if(isset($_GET['deconnecter'])){
         require_once __DIR__ . '/../script/deconnecter.php'; 
+    }
+    else if(isset($_GET['update_stock'])){
+        require_once __DIR__ . '/../script/update_stock.php'; 
     }
 }else{
     if(isset($_GET['connecter'])){

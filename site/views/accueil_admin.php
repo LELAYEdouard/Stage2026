@@ -89,7 +89,7 @@
             }
             <?php } ?>  
 
-            vider_produit()
+            vider_produit("catalogue")
             afficher_produits(affichage,"catalogue",1)
         })
 

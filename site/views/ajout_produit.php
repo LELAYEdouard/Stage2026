@@ -32,7 +32,7 @@
 			<input type="checkbox" class="form-check-input" id=local name="local">
 			<label class="form-check-label" for="local">Produit local</label>
 		</div>
-		<button type="submit" class="btn btn-primary">Creer</button>
+		<button type="submit" class="btn btn-dark">Creer</button>
 	</form>
 </div>
 <div class="alert alert-primary hidden" role="alert">

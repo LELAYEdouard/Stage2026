@@ -1,7 +1,4 @@
 <?php
-require_once __DIR__ ."/../controllers/produit_controller.php";
-//print_r($_FILES);
-
 if(isset($_POST) && ((isset($_POST['id']) && $_POST['id'] != "-1") || (isset($_POST['action']) && $_POST['action']=="ajout"))){
     
     if(isset($_POST['local'])){

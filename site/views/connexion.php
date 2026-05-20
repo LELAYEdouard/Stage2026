@@ -8,6 +8,6 @@
             <label for="mdp">Mot de Passe</label>
             <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Mot_de_passe">
         </div>
-        <button type="submit" class="btn btn-primary">Connexion</button>
+        <button type="submit" class="btn btn-dark">Connexion</button>
     </form>
 </div>

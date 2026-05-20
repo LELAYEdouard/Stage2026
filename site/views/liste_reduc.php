@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ ."/../controllers/reduction_controller.php";
 $lst = ReductionController::get($_GET['produit']);
 ?>
 

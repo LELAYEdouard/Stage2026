@@ -127,3 +127,17 @@ img{
 .card-body> div>p:last-child{
 	background-color: #BE69FF;
 }
+
+.stock p {
+	width: 30em;
+}
+
+body{
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main{
+	flex-grow: 1;
+}
