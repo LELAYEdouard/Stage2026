@@ -145,6 +145,8 @@ function click_produit(id,prix,ref,nom,qte,local,taux_reduc,prix_reduit,cat,url,
         document.querySelector("#contenu_reduc input[name=action]").value = "ajout"
     }
 
+    content.style.position = "absolute";
+    content.style.top = "0px"
     //si on clique trop a droite de l'ecran
     if(event.clientX > window.innerWidth-200){
         content.style.left = "";
@@ -154,7 +156,16 @@ function click_produit(id,prix,ref,nom,qte,local,taux_reduc,prix_reduit,cat,url,
         content.style.left = event.clientX + "px";
         content.style.right = "";
     }
-    content.style.top = event.clientY + "px";
+
+    //si on clique trop en bas de l'ecran
+    if (event.clientY > window.innerHeight - 269) {
+        content.style.top = (window.innerHeight - 269) + "px";
+
+    } else {
+
+        content.style.top = event.clientY + "px";
+    }
+
     popup_prod.classList.remove("hidden")
     
     document.querySelector("#contenu>h4").innerHTML = nom
@@ -173,7 +184,7 @@ function click_produit(id,prix,ref,nom,qte,local,taux_reduc,prix_reduit,cat,url,
 
         document.querySelector("#contenu_modif input[name=id]").value = id
         document.querySelector("#contenu_modif input[name=nom]").placeholder = nom
-        document.querySelector("#contenu_modif input[name=prix]").placeholder = prix
+        document.querySelector("#contenu_modif input[name=prix]").placeholder = prix+"€"
         document.querySelector("#contenu_modif input[name=quantite]").placeholder = qte
         document.querySelector("#contenu_modif input[name=reference]").placeholder = ref
         document.querySelector("#contenu_modif img").src = "img/prod/"+url
@@ -211,18 +222,19 @@ function click_modif(id,id_reduc,prix,taux_reduc,prix_reduit,date_debut,date_fin
     document.querySelector("#contenu_reduc input[name=taux]").value = ""
     document.querySelector("#contenu_reduc label[name=prix_base]").innerHTML = ""
     document.querySelector("#contenu_reduc input[name=prix_reduit]").placeholder = ""
+    document.querySelector("#contenu_reduc input[name=prix_reduit]").value = ""
     document.querySelector("#contenu_reduc input[name=date_deb]").value = ""
     document.querySelector("#contenu_reduc input[name=date_fin]").value = ""
     
     document.getElementById("overlay_reduc").classList.remove("hidden")
     
     document.querySelector("#contenu_reduc input[name=id]").value = id
-    document.querySelector("#contenu_reduc label[name=prix_base]").innerHTML = prix
+    document.querySelector("#contenu_reduc label[name=prix_base]").innerHTML = prix+"€"
 
     if(taux_reduc){
         document.querySelector("#contenu_reduc input[name=id_reduc]").value = id_reduc
-        document.querySelector("#contenu_reduc input[name=taux]").placeholder = taux_reduc
-        document.querySelector("#contenu_reduc input[name=prix_reduit]").placeholder = prix_reduit
+        document.querySelector("#contenu_reduc input[name=taux]").placeholder = "-"+taux_reduc+"%"
+        document.querySelector("#contenu_reduc input[name=prix_reduit]").placeholder = prix_reduit+"€"
         document.querySelector("#contenu_reduc input[name=date_deb]").value = date_debut
         document.querySelector("#contenu_reduc input[name=date_fin]").value = date_fin
     }
@@ -251,7 +263,6 @@ function valider_ajout(){
         document.querySelector(".alert").classList.remove("hidden")
         return false;
     }
-    console.log("oui")
     return true;
 }
 
@@ -261,7 +272,7 @@ function check_reduc(){
     let date_deb = document.querySelector("#contenu_reduc input[name=date_deb]").value
     let date_fin = document.querySelector("#contenu_reduc input[name=date_fin]").value 
     
-    return ( check_taux(taux)) || (check_date(date_deb,date_fin))
+    return (check_date(date_deb,date_fin))
 
 }
 
@@ -290,8 +301,6 @@ function check_ajout(){
     let prix = document.querySelector("input[name=prix]").value
     let qte = document.querySelector(" input[name=qte]").value 
     let ref = document.querySelector(" input[name=reference]").value
-    console.log(nom,prix,qte,ref)
-    console.log( check_nom(nom) || nom =="") && (check_prix(prix)|| prix =="") && (check_quantite(qte))&& ( check_ref(ref)||ref =="")
 
     return ( check_nom(nom) || nom =="") || (check_prix(prix)|| prix =="") || (check_quantite(qte))|| ( check_ref(ref)||ref =="")
 

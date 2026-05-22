@@ -40,3 +40,7 @@ function connexion($mail,$mdp){
     $mdp_hash=requete("SELECT mdp from _compte_admin where mail = :mail",[':mail'=>$mail])[0]['mdp'];
     return password_verify($mdp->getValue(),$mdp_hash);
 }
+
+function get_horaire(){
+    return requete("SELECT horaire FROM _compte_admin")[0]['horaire'];
+}

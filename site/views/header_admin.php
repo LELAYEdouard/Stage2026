@@ -23,6 +23,7 @@ require_once __DIR__ ."/../controllers/categorie_controller.php";
         <a class="text-white my-3" href="admin.php?ajout_produit=1">Ajouter un produit</a>
         <a class="text-white my-3" href="admin.php?stock=1">Mon stock</a>
         <a class="text-white my-3" href="admin.php?graph=1">Statistiques stock</a>
+        <a class="text-white my-3" href="admin.php?horaire=1">Horaires</a>
     </div>
 
 </header>

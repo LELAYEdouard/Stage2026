@@ -18,6 +18,9 @@ if(!empty($_SESSION)){
     else if(isset($_GET['update_stock'])){
         require_once __DIR__ . '/../script/update_stock.php'; 
     }
+    else if(isset($_GET['action_horaire'])){
+        require_once __DIR__ . '/../script/action_horaire.php';
+    }
 }else{
     if(isset($_GET['connecter'])){
         require_once __DIR__ . '/../script/connecter.php'; 
@@ -66,6 +69,10 @@ if(!empty($_SESSION)){
             else if(isset($_GET['stock'])){
                 require_once __DIR__ . '/../views/liste_stock.php';
             }
+            else if(isset($_GET['horaire'])){
+                require_once __DIR__ . '/../views/horaire.php';
+            }
+
         }
         else{
             require_once __DIR__ . '/../views/connexion.php'; 

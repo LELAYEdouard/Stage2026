@@ -20,7 +20,7 @@ header button{
     outline: 0;
     overflow: hidden;
 }
-.action div{
+.action>div{
     margin: auto;
     width: 500px;
     position: fixed;
@@ -28,6 +28,13 @@ header button{
     border: 1px solid black;
     padding: 10px;
     z-index: 1000;
+
+    label {
+        width: 6em;
+    }
+    input[type=text] {
+        width: 18em;
+    }
 }
 
 #contenu_modif,#contenu_reduc,#contenu_liste,#contenu_supp{
@@ -71,4 +78,15 @@ form img{
     &:hover {
         background-color: #9e9e9e;
     }
+}
+
+#contenu_reduc {
+    input,label{
+        width: 10em;
+    }
+}
+
+input[name=prix_reduit]{
+    border: none;
+    
 }

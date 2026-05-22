@@ -84,13 +84,18 @@
     <div class="d-flex flex-column flex-md-row justify-content-evenly align-items-center align-items-md-start">
         <div class="d-flex flex-column align-items-center">
             <h1>HORAIRES</h1>
+            
             <div class="mt-4 d-flex flex-column align-items-center align-items-md-start">
-                <h4>Lundi</h4>
-                <p>15h30-19h30</p>
-                <h4>Du mardi au vendredi</h4>
-                <p>8h30-13h00 / 15h30-19h30</p>
-                <h4>Samedi et dimanche</h4>
-                <p>9h00-12h00</p>
+                <?php 
+                $horaire = unserialize(get_horaire());
+                foreach($horaire as $val){ 
+                $cle = array_keys($val);
+                ?>
+                <div class="form-group d-flex flex-column">
+                    <h4><?=$val[$cle[0]]?></h4>
+                    <p><?=$val[$cle[1]]?></p>
+                </div>
+                <?php } ?>
             </div>
         </div>
         <div class="d-none d-md-block ">

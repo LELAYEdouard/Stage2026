@@ -15,19 +15,35 @@
 
 <!-- reduction -->
 <section id="overlay_reduc" class="d-flex action hidden">
-    <div id="contenu_reduc">
+    <div id="contenu_reduc" class="rounded">
         <i class="bi bi-x-lg"></i>
         <h2>Réduction</h2>
         <form action="admin.php?action_reduc=1" method="post" onsubmit="return valider_reduc();">
             <input type="hidden" name="id" value="-1">
             <input type="hidden" name="id_reduc" value="-1">
             <input type="hidden" name="action" value="ajout">
-            <input type="date" name="date_deb">
-            <input type="date" name="date_fin">
-            <label name="prix_base"></label>
-            <input type="text" name="taux" value="">
-            <input name="prix_reduit" readonly="readonly">
-            <input type="submit" value="Valider">
+            
+            <div>
+                <label>Date Début</label>
+                <input type="date" name="date_deb">
+            </div>
+            <div>
+                <label>Date Fin</label>
+                <input type="date" name="date_fin">
+            </div>
+            <div>
+                <label>Prix</label>
+                <label name="prix_base"></label>
+            </div>
+            <div class="d-flex">
+                <label>Taux de Réduction</label>
+                <input type="number" min=0 max=100 name="taux" value="" class="form-control">
+            </div>
+            <div class="d-flex">
+                <label>Prix Réduit</label>
+                <input name="prix_reduit" readonly="readonly" class="bg-white form-control" disabled="disabled">
+            </div>
+            <input type="submit" value="Valider" class="btn btn-dark">
         </form>
         <div class="alert alert-primary hidden" role="alert">
             Erreur de saisie ! 
@@ -37,26 +53,44 @@
 
 <!-- modifier produit -->
 <section id="overlay_modif" class="d-flex action hidden">
-    <div id="contenu_modif">
+    <div id="contenu_modif" class="rounded">
         <i class="bi bi-x-lg"></i>
         <h2>Modifier</h2>
 
         <form action="admin.php?action_prod=1" method="post" enctype="multipart/form-data" onsubmit="return valider_modif();">
             <input type="hidden" name="id" value="-1">
             <input type="hidden" name="action" value="modif">
-            <input type="text" name="reference">
-            <input type="text" name="nom">
-            <input type="text" name="prix">
-            <input type="text" name="quantite">
+            <div class="form-group d-flex align-items-center">
+                <label>Référence</label>
+                <input type="text" name="reference" class="form-control">
+            </div>
+            <div class="form-group d-flex align-items-center">
+                <label>Nom</label>
+                <input type="text" name="nom" class="form-control">
+            </div>
+            <div class="form-group d-flex align-items-center">
+                <label>Prix</label>
+                <input type="text" name="prix" class="form-control">
+            </div>
+            <div class="form-group d-flex align-items-center">
+                <label>Quantité</label>
+                <input type="text" name="quantite" class="form-control">
+            </div>
+            <label>Catégorie</label>
             <select name="cat">
                 <?php foreach($all_cat as $cle => $val){ ?>
                 <option value="<?= htmlentities($val["id"])?>" name="<?= htmlentities($val["nom_categorie"])?>"><?= htmlentities($val["nom_categorie"])?></option>
                 <?php } ?>
             </select>
-            <img id="image_visu" name="img" src=""/>
-            <input type="file" id="imgInp" name="image"/>
-            <input type="checkbox" name="local">
-            <input type="submit" value="Valider">
+            <div class="form-group d-flex align-items-center">
+                <img id="image_visu" name="img" src=""/>
+                <input type="file" id="imgInp" name="image"/>   
+            </div>
+            <div class="form-group d-flex align-items-center">
+                <label>Produit Local</label>
+                <input type="checkbox" name="local">
+            </div>
+            <input type="submit" value="Valider" class="btn btn-dark">
         </form>
         <div class="alert alert-primary hidden" role="alert">
             Erreur de saisie ! 
@@ -68,11 +102,10 @@
     <div id="contenu" class="d-flex flex-column">
         <h4></h4>
 
-        <button class="btn btn-dark" name="modifier">Modifier</button>
-        <button class="btn btn-dark" name="reduction">Réduction</button>
-        <a href="admin.php" class="btn btn-dark" name="liste">Liste des Réductions</a>
-        
-        <button class="btn btn-danger" name="supprimer">Supprimer</button>
+        <button class="btn btn-dark mb-1" name="modifier">Modifier</button>
+        <button class="btn btn-dark my-1" name="reduction">Réduction</button>
+        <a href="admin.php" class="btn btn-dark my-1" name="liste">Liste des Réductions</a>
+        <button class="btn btn-danger mt-1" name="supprimer">Supprimer</button>
 
     </div>
 </section>
@@ -154,9 +187,9 @@
         //calcule le prix réduit 
         document.querySelector("#contenu_reduc input[name=taux]").addEventListener('input',()=>{
             let taux= document.querySelector("#contenu_reduc input[name=taux]").value
+            let val = document.querySelector("#contenu_reduc label[name=prix_base]").innerHTML
             if(!check_taux(taux) && taux != ""){
-                console.log(taux)
-                document.querySelector("#contenu_reduc input[name=prix_reduit]").value = Math.round(document.querySelector("#contenu_reduc label[name=prix_base]").innerHTML * (1 - taux/100) * 100)/100
+                document.querySelector("#contenu_reduc input[name=prix_reduit]").value = Math.round(val.substr(0,val.length -1) * (1 - taux/100) * 100)/100 +"€"
             }else{
                 
                 document.querySelector("#contenu_reduc input[name=prix_reduit]").value=""

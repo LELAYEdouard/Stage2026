@@ -28,13 +28,13 @@
         
         <div class="d-none d-lg-flex flex-row justify-content-evenly align-items-center bg-black">
             <div class="btn-group">
-                <a href="/?catalogue=1&cat=all" role="button" class="text-white p-3">Tout les produits</a>
+                <a href="/?catalogue=1&cat=all" role="button" class="text-white py-3">Tout les produits</a>
             </div>
 
             <?php
             foreach($cat_principales as $cle => $value){ ?>
             <div class="btn-group"> 
-                <a href="/?catalogue=1&cat=<?php echo $value["id"];?>" role="button" class="text-white p-3"><?php echo $value["nom_categorie"];?></a>
+                <a href="/?catalogue=1&cat=<?php echo $value["id"];?>" role="button" class="text-white py-3"><?php echo $value["nom_categorie"];?></a>
                 <button type="button" class="bg-black dropdown-toggle dropdown-toggle-split text-white" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="visually-hidden">Toggle Dropdown</span>
                 </button>

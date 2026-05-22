@@ -62,6 +62,6 @@ class Categorie{
     }
 
     static function get_all_cat(){
-        return requete("SELECT id,nom_categorie FROM _categorie");
+        return requete("SELECT id,nom_categorie FROM _categorie ORDER BY nom_categorie");
     }
 }
