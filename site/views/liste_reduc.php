@@ -40,24 +40,34 @@ $lst = ReductionController::get($_GET['produit']);
 </section>
 
 
-<section>
+<section id="lst_reduc">
     <h1>Réductions</h1>
     <?php if($lst){ ?>
         <div>
             <?php foreach($lst as $cle => $val){ ?>
             <div class="d-flex flex-row">
-                <h4>Du</h4>
-                <p><?= $val["date_debut"]?></p>
-                <h4>Au</h4>
-                <p><?= $val["date_fin"]?></p>
-                <h4>Réduit de</h4>
-                <p>-<?= $val["taux_reduction"]*100?>%</p>
-                <button class="btn btn-dark" name="modifier" onclick=click_modif(<?= $_GET['produit'] ?>,<?= $val['id'] ?>,<?= $val['prix'] ?>,<?= $val['taux_reduction']*100 ?>,<?= $val['prix_reduit'] ?>,<?= '"' . $val['date_debut'] . '"'?>,<?='"' .  $val['date_fin']  . '"'?>)>Modifier</button>
-                <form action="admin.php?action_reduc=1" method="post">
-                    <input type="hidden" name="id" value="<?= $val['id'] ?>">
-                    <input type="hidden" name="action" value="supprimer">
-                    <input type="submit" class="btn btn-danger" value="Supprimer">
-                </form>
+                <div class="bloc">
+                    <label>Du</label>
+                    <p><?= $val["date_debut"]?></p>
+                </div>
+                <div class="sep"></div>
+                <div class="bloc">
+                    <label>Au</label>
+                    <p><?= $val["date_fin"]?></p>
+                </div>
+                <div class="sep"></div>
+                <div class="bloc">
+                    <label>Réduction</label>
+                    <p>-<?= $val["taux_reduction"]*100?>%</p>
+                </div>
+                <div class="actions">
+                    <button class="btn btn-dark" name="modifier" onclick=click_modif(<?= $_GET['produit'] ?>,<?= $val['id'] ?>,<?= $val['prix'] ?>,<?= $val['taux_reduction']*100 ?>,<?= $val['prix_reduit'] ?>,<?= '"' . $val['date_debut'] . '"'?>,<?='"' .  $val['date_fin']  . '"'?>)>Modifier</button>
+                    <form action="admin.php?action_reduc=1" method="post">
+                        <input type="hidden" name="id" value="<?= $val['id'] ?>">
+                        <input type="hidden" name="action" value="supprimer">
+                        <input type="submit" class="btn-supprimer" value="Supprimer">
+                    </form>
+                </div>
             </div>
             <?php } ?>
         </div>
@@ -89,3 +99,36 @@ $lst = ReductionController::get($_GET['produit']);
         }
     })
 </script>
+
+<style>
+#lst_reduc{
+.d-flex.flex-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  transition: border-color 0.15s;
+}
+.d-flex.flex-row:hover { border-color: #aaa; }
+
+.bloc { display: flex; flex-direction: column; gap: 2px; }
+.bloc label { font-size: 11px; color: #999; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+.bloc p { font-size: 14px; font-weight: 500; color: #111; margin: 0; }
+.sep { width: 1px; height: 32px; background: #eee; flex-shrink: 0; }
+.actions { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+
+/* Bouton supprimer sobre, en rouge outline */
+.btn-supprimer {
+  height: 32px; padding: 0 14px;
+  background: transparent; color: #a32d2d;
+  border: 1px solid #a32d2d; border-radius: 6px;
+  font-size: 13px; font-weight: 500; cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-supprimer:hover { background: #fcebeb; }
+}
+</style>

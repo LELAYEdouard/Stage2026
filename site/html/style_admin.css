@@ -90,3 +90,57 @@ input[name=prix_reduit]{
     border: none;
     
 }
+
+
+#contenu_supp {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 24px 28px;
+  width: 100%;
+  max-width: 340px;
+}
+
+#contenu_supp h2 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #111;
+  margin-bottom: 20px;
+}
+
+#contenu_supp article {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* Bouton Valider (btn-danger) */
+#contenu_supp .btn.btn-danger {
+  height: 34px;
+  padding: 0 16px;
+  background: #a32d2d;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+#contenu_supp .btn.btn-danger:hover { opacity: 0.85; }
+#contenu_supp .btn.btn-danger:active { transform: scale(0.97); }
+
+/* Bouton Annuler (btn-secondary) */
+#contenu_supp .btn.btn-secondary {
+  height: 34px;
+  padding: 0 16px;
+  background: transparent;
+  color: #666;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+#contenu_supp .btn.btn-secondary:hover { background: #f5f5f5; border-color: #aaa; }
