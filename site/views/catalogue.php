@@ -163,9 +163,12 @@ require_once __DIR__ . "/../controllers/produit_controller.php";
         if(filtre_nom){
             //cache section produit locaux
             document.getElementById("sect_prod_locaux").classList.add("hidden")
+            document.getElementById("sect_prod_reduc").classList.add("hidden")
         }
         else{
             document.getElementById("sect_prod_locaux").classList.remove("hidden")
+            document.getElementById("sect_prod_reduc").classList.remove("hidden")
+            
         }
 
         affichage = produits.filter(elt => {
@@ -181,7 +184,7 @@ require_once __DIR__ . "/../controllers/produit_controller.php";
         }
         <?php } ?>  
 
-        vider_produit()
+        vider_produit("catalogue")
         afficher_produits(affichage,"catalogue")
     })
     
@@ -222,6 +225,7 @@ require_once __DIR__ . "/../controllers/produit_controller.php";
 
         //cache section produit locaux
         document.getElementById("sect_prod_locaux").classList.add("hidden")
+        document.getElementById("sect_prod_reduc").classList.add("hidden")
 
         let locaux = document.getElementById("switch_locaux").checked
         let reduc = document.getElementById("switch_reduc").checked
@@ -308,7 +312,7 @@ require_once __DIR__ . "/../controllers/produit_controller.php";
         }
         <?php } ?>  
 
-        vider_produit()
+        vider_produit("catalogue")
         afficher_produits(affichage,"catalogue")
     })
 

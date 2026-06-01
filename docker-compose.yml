@@ -43,6 +43,15 @@ services:
       - db
     networks:
       - reseau_db_phpmyadmin
+
+  python:
+    build: ./ocr
+    container_name: pdf_python
+    volumes:
+        - ./site/html/img/facture/:/ocr/facture/input/
+    environment:
+        - DB_NAME=${DB_NAME}
+
     
 networks:
   reseau_db_phpmyadmin:
@@ -50,3 +59,4 @@ networks:
 
 volumes:
   db_data:
+  ocr_pdf:

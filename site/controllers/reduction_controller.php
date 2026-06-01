@@ -12,19 +12,19 @@ class ReductionController {
         $str_update=[] ;
         $params = [];
 
-        if($id_prod){
+        if($id_prod !== null){
             $str_update[] = "id_prod = :id_prod ";
             $params[":id_prod"] = $id_prod;
         }
-        if($date_deb){
+        if($date_deb !== null){
             $str_update[] =  "date_debut = :date_deb ";
             $params[":date_deb"] = $date_deb;
         }
-        if($date_fin){
+        if($date_fin !== null){
             $str_update[] =  "date_fin = :date_fin ";
             $params[":date_fin"] = $date_fin;
         }
-        if($taux){
+        if($taux !== null){
             $taux /= 100;
             $str_update[] = "taux_reduction = :taux ";
             $params[":taux"] = $taux;
