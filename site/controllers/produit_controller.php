@@ -19,28 +19,28 @@ class ProduitController {
         $str = "SET ";
         $str_update=[] ;
         $params = [];
-
-        if($nom !== null){
+        
+        if($nom !== null && $nom !== ""){
             $str_update[] = "nom = :nom ";
             $params[":nom"] = $nom;
         }
-        if($reference !== null){
+        if($reference !== null && $reference !== ""){
             $str_update[] =  "reference = :reference ";
             $params[":reference"] = $reference;
         }
-        if($prix !== null){
+        if($prix !== null && $prix !== ""){
             $str_update[] =  "prix = :prix ";
             $params[":prix"] = $prix;
         }
-        if($quantite !== null){
+        if($quantite !== null && $quantite !== ""){
             $str_update[] = "quantite = :quantite ";
             $params[":quantite"] = $quantite;
         }
-        if($url !== null){
+        if($url !== null  && $url !== ""){
             $str_update[] = "url_img = :url_img ";
             $params[":url_img"] = $url;
         }
-        if($cat !== null){
+        if($cat !== null && $cat !== ""){
             $str_update[] = "id_categorie = :id_categorie ";
             $params[":id_categorie"] = $cat;
         }
