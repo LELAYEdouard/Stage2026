@@ -48,7 +48,7 @@ services:
     build: ./ocr
     container_name: pdf_python
     volumes:
-        - ./site/html/img/facture/:/ocr/facture/input/
+        - ./site/:/site/
     environment:
         - DB_NAME=${DB_NAME}
 

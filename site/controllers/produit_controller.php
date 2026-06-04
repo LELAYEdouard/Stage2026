@@ -62,5 +62,17 @@ class ProduitController {
     static function delete($id){
         Produit::delete($id);
     }
+
+    static function get_by_ref($ref){
+        Produit::get_by_ref($ref);
+    }
+
+    static function create_by_fact($reference,$nom,$quantite,$prix,$categorie){
+        $params = [':reference' => $reference,':nom' => $nom,':prix' => $prix,':quantite' => $quantite,':categorie' => $categorie];
+        $sql= "INSERT INTO _produit (reference,nom,prix,quantite,id_categorie) VALUES (:reference,:nom,:prix,:quantite,:categorie);";
+        
+        Produit::create_by_fact($sql,$params);
+    }
 }
+
 ?>

@@ -23,23 +23,24 @@
             <input type="hidden" name="id_reduc" value="-1">
             <input type="hidden" name="action" value="ajout">
             
-            <div>
+            <div class="my-3">
                 <label>Date Début</label>
                 <input type="date" name="date_deb">
             </div>
-            <div>
+            <div class="my-3">
                 <label>Date Fin</label>
                 <input type="date" name="date_fin">
             </div>
-            <div>
+            <div class="my-3">
                 <label>Prix</label>
                 <label name="prix_base"></label>
             </div>
-            <div class="d-flex">
+            <div class="d-flex my-3">
                 <label>Taux de Réduction</label>
                 <input type="number" min=0 max=100 name="taux" value="" class="form-control">
+                <label class="mt-2 ms-2">%</label>
             </div>
-            <div class="d-flex">
+            <div class="d-flex my-3">
                 <label>Prix Réduit</label>
                 <input name="prix_reduit" readonly="readonly" class="bg-white form-control" disabled="disabled">
             </div>
@@ -60,19 +61,19 @@
         <form action="admin.php?action_prod=1" method="post" enctype="multipart/form-data" onsubmit="return valider_modif();">
             <input type="hidden" name="id" value="-1">
             <input type="hidden" name="action" value="modif">
-            <div class="form-group d-flex align-items-center">
+            <div class="form-group d-flex align-items-center my-3">
                 <label>Référence</label>
                 <input type="text" name="reference" class="form-control">
             </div>
-            <div class="form-group d-flex align-items-center">
+            <div class="form-group d-flex align-items-center my-3">
                 <label>Nom</label>
                 <input type="text" name="nom" class="form-control">
             </div>
-            <div class="form-group d-flex align-items-center">
+            <div class="form-group d-flex align-items-center my-3">
                 <label>Prix</label>
                 <input type="text" name="prix" class="form-control">
             </div>
-            <div class="form-group d-flex align-items-center">
+            <div class="form-group d-flex align-items-center my-3">
                 <label>Quantité</label>
                 <input type="text" name="quantite" class="form-control">
             </div>
@@ -82,11 +83,11 @@
                 <option value="<?= htmlentities($val["id"])?>" name="<?= htmlentities($val["nom_categorie"])?>"><?= htmlentities($val["nom_categorie"])?></option>
                 <?php } ?>
             </select>
-            <div class="form-group d-flex align-items-center">
+            <div class="form-group d-flex align-items-center my-3">
                 <img id="image_visu" name="img" src=""/>
                 <input type="file" id="imgInp" name="image"/>   
             </div>
-            <div class="form-group d-flex align-items-center">
+            <div class="form-group d-flex align-items-center my-3">
                 <label>Produit Local</label>
                 <input type="checkbox" name="local">
             </div>

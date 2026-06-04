@@ -1,12 +1,18 @@
 from PyPDF2 import PdfReader
 import re
 import sys
+import json
+import os
 
-temp = open(f'/ocr/facture/output/{sys.argv[1]}','rb')
+temp = open(f'/site/ocr/facture/output/{sys.argv[1]}','rb')
 pdfread = PdfReader(temp)
 pages = pdfread.pages
 
-fichier = open(f"/ocr/scriptSQL/{sys.argv[1].replace('.pdf','.sql')}", "w")
+fichier = open(f"/site/ocr/scriptSQL/{sys.argv[1].replace('.pdf','.sql')}", "w")
+resume = open(f"/site/html/fetch.json", "w+")
+os.chmod('/site/html/fetch.json',0o777)
+
+jsontxt = {}
 
 for i in range(len(pages)):
 
@@ -28,8 +34,12 @@ for i in range(len(pages)):
 
     for ref,qte in match:
         if(qte != 0):
-            fichier.write(f"UPDATE _produit SET quantite = {qte} WHERE reference = {ref};\n")
-    
+            fichier.write(f"UPDATE _produit SET quantite = quantite + {qte} WHERE reference = {ref};\n")
+        
+        jsontxt[ref] = qte
 
+
+json.dump(jsontxt,resume)
 
 fichier.close()
+resume.close()

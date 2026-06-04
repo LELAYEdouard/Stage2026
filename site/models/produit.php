@@ -39,4 +39,11 @@ class Produit{
         requete("UPDATE _produit SET en_ligne = 0 WHERE id = :id",[':id'=> $id]);
     }
     
+    static function get_by_ref($ref){
+        return requete("SELECT * FROM ". $this->table_name." WHERE reference = : ref",[':ref' => $ref]);
+    }
+
+    static function create_by_fact($sql,$params){
+        return requete($sql,$params);
+    }
 }

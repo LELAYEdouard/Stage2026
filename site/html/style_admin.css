@@ -2,12 +2,18 @@ header button{
     background: none;
     border: none;
 }
-
+header i:nth-child(1) {
+    font-size: 2em;
+}
 .card:hover{
     cursor: pointer;
 }
-
-
+#connexion{
+    width: 20em;
+}
+#form_connexion{
+    margin-top: 5em;
+}
 .action{
     position: fixed;
     top: 0;
@@ -41,8 +47,17 @@ header button{
     margin: auto;
     width: 500px;
     position: relative;
-}
 
+    input[name=taux]{
+        appearance: textfield;
+        max-width: 4em;
+    }
+    input[value=Valider]{
+        margin-left: 19em;
+        width: 10em;
+    }
+    
+}
 #overlay_modif, #overlay_reduc, #overlay_liste,#overlay_supp{
     background-color: rgba(0, 0, 0, 0.5);
 }

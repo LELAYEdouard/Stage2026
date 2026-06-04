@@ -65,7 +65,7 @@ $lst = ReductionController::get($_GET['produit']);
                     <form action="admin.php?action_reduc=1" method="post">
                         <input type="hidden" name="id" value="<?= $val['id'] ?>">
                         <input type="hidden" name="action" value="supprimer">
-                        <input type="submit" class="btn-supprimer" value="Supprimer">
+                        <input type="submit" class="btn btn-danger" value="Supprimer">
                     </form>
                 </div>
             </div>

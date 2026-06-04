@@ -233,7 +233,7 @@ function click_modif(id,id_reduc,prix,taux_reduc,prix_reduit,date_debut,date_fin
 
     if(taux_reduc){
         document.querySelector("#contenu_reduc input[name=id_reduc]").value = id_reduc
-        document.querySelector("#contenu_reduc input[name=taux]").placeholder = "-"+taux_reduc+"%"
+        document.querySelector("#contenu_reduc input[name=taux]").placeholder = taux_reduc
         document.querySelector("#contenu_reduc input[name=prix_reduit]").placeholder = prix_reduit+"€"
         document.querySelector("#contenu_reduc input[name=date_deb]").value = date_debut
         document.querySelector("#contenu_reduc input[name=date_fin]").value = date_fin

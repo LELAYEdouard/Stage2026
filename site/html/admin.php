@@ -79,6 +79,12 @@ if(!empty($_SESSION)){
             else if(isset($_GET['ajout_facture'])){
                 require_once __DIR__ . '/../views/ajout_facture.php'; 
             }
+            else if(isset($_GET['resume'])){
+                require_once __DIR__ . '/../views/resume.php';
+            }
+            else if(isset($_GET['ajout_stock_fact'])){
+                require_once __DIR__ . '/../views/ajout_stock_fact.php';
+            }
 
         }
         else{

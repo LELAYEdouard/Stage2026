@@ -2,4 +2,6 @@
 
 docker compose up -d
 
-./site/ocr/watch.sh
+cd site/ocr
+
+./watch.sh
