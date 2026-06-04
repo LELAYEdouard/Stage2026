@@ -45,7 +45,7 @@ services:
       - reseau_db_phpmyadmin
 
   python:
-    build: ./ocr
+    build: ./site/ocr
     container_name: pdf_python
     volumes:
         - ./site/:/site/
