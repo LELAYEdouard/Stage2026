@@ -63,7 +63,7 @@
 
 <section id="textPresentation">
     <p class="fs-3 text-center d-none d-lg-block">
-        Petite épicerie idéalement située entre le bourg et l’école, à côté de la bibliothèque, offrant un emplacement pratique pour les habitants et les familles. Elle propose un large choix de produits du quotidien, complété par une belle sélection de produits locaux mettant en valeur les producteurs de la région. Vous y trouverez également des articles gourmands et des achats plaisir, pour se faire plaisir ou offrir. Un commerce de proximité chaleureux, alliant praticité, qualité et convivialité.
+        Petite épicerie de proximité située entre le bourg et l'école, juste à côté de la bibliothèque, en K d'Besoin vous propose des produits alimentaires et non-alimentaires classiques enrichis par de nombreux produits Locaux ainsi que les petits achats "plaisirs" et idées-cadeaux. Vous y trouverez aussi du gaz, Antargaz et Butagaz, du pain et viennoiseries en dépôt tous les mercredis et à chaque fermeture de votre boulangerie, un service de photocopie couleur et noir et blanc ainsi que le journal le Trégor. En K d'Besoin reste à votre écoute, votre satisfaction étant importante.
     </p>
     <p class="d-lg-none d-block fs-6 text-center mx-2">
         Petite épicerie situé entre le bourg et l'école, à coté de la bibliothèque proposant des

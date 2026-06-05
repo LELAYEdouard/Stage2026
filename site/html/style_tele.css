@@ -39,10 +39,12 @@ header>a {
 
 }
 
-footer img,header img {
+header img {
     width: 50vw;
 }
-
+footer img{
+    display: none;
+}
 
 p{
     font-size: small;

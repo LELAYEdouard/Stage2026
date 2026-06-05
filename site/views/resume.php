@@ -75,10 +75,14 @@ $resume = file_get_contents('fetch.json');
         <?php }?>
 
     }
-    <?php if(!isset($_GET['view'])){?>
-    document.querySelector("form label").innerHTML = lst.length +" produit(s) manquant(s)"
-    document.querySelector("form button").innerHTML = "Ajouter " +lst.length +" produit(s) manquant(s)"
-    document.querySelector("form input").value = JSON.stringify(lst)
+    <?php if(!isset($_GET['view']) ){?>
+    if(lst.length != 0){
+        document.querySelector("form label").innerHTML = lst.length +" produit(s) manquant(s)"
+        document.querySelector("form button").innerHTML = "Ajouter " +lst.length +" produit(s) manquant(s)"
+        document.querySelector("form input").value = JSON.stringify(lst)
+    }else{
+        document.querySelector("form").classList.add('hidden')
+    }
     <?php }?>
 
 </script>

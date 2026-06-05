@@ -18,41 +18,38 @@ foreach ($lst as $prod) {
     $qte = substr($prod[1],1,-1);
     ?>
 
-    <div class="form-line product-block">
+    <div class="ajout-ligne">
 
-        
+    <input type="text"
+           name="ref[<?= $i ?>]"
+           value="<?= htmlentities($ref) ?>"
+           placeholder="Référence">
 
-        <label>Référence</label>
-        <input type="text"
-               name="ref[<?= $i ?>]"
-               value="<?= $ref ?>">
+    <input type="text"
+           name="nom[<?= $i ?>]"
+           placeholder="Nom">
 
-        <label>Nom</label>
-        <input type="text"
-               name="nom[<?= $i ?>]"
-               >
+    <input type="number"
+           step="0.01"
+           min="0"
+           name="prix[<?= $i ?>]"
+           placeholder="Prix">
 
-        <label>Prix</label>
-        <input type="number"
-               step="0.01"
-               name="prix[<?= $i ?>]"
-               >
+    <input type="number"
+           min="0"
+           name="qte[<?= $i ?>]"
+           value="<?= htmlentities($qte) ?>"
+           placeholder="Qté">
 
-        <label>Quantité</label>
-        <input type="number"
-               name="qte[<?= $i ?>]"
-               value="<?=$qte ?>">
+    <select name="cat[<?= $i ?>]">
+        <?php foreach ($all_cat as $cat) { ?>
+            <option value="<?= $cat["id"] ?>">
+                <?= htmlentities($cat["nom_categorie"]) ?>
+            </option>
+        <?php } ?>
+    </select>
 
-        <label>Catégorie</label>
-        <select name="cat[<?= $i ?>]">
-            <?php foreach ($all_cat as $cat) { ?>
-                <option value="<?= $cat["id"] ?>">
-                    <?= htmlentities($cat["nom_categorie"]) ?>
-                </option>
-            <?php } ?>
-        </select>
-
-    </div>
+</div>
 
 <?php $i++; } ?>
 
@@ -74,3 +71,37 @@ foreach ($lst as $prod) {
 		}
 	}
 </script>
+<style>
+.ajout-ligne {
+    display: grid;
+    grid-template-columns: 120px 1fr 100px 100px 180px;
+    gap: 12px;
+    align-items: center;
+
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+}
+
+.ajout-ligne input,
+.ajout-ligne select {
+    width: 100%;
+    height: 36px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 0 10px;
+}
+
+.form-prod {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-submit {
+    align-self: center;
+    margin-top: 15px;
+}
+</style>

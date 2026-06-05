@@ -3,7 +3,7 @@ require_once __DIR__ . "/../controllers/categorie_controller.php";
 require_once __DIR__ . "/../controllers/produit_controller.php";
 ?>
 <!-- bouton tri et filtre -->
-<button class="btn btn-dark position-fixed z-3" 
+<button class="btn btn-dark position-fixed z-3 end-0 d-flex flex-row mt-3 me-3" 
     type="button" 
     data-bs-toggle="offcanvas"
     data-bs-target="#offcanvasBottom" 
@@ -11,7 +11,8 @@ require_once __DIR__ . "/../controllers/produit_controller.php";
     data-bs-toggle="tooltip" 
     data-bs-placement="top" 
     title="Tris et Filtres">
-    <i class="bi bi-sliders"></i>
+    <i class="bi bi-sliders me-2"></i>
+    <p class="m-0">Tris / Filtres</p>
 </button>
 
 <!-- parametre tri et filtre -->

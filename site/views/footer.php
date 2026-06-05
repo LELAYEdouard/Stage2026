@@ -1,4 +1,4 @@
-<footer class="bg-black d-flex flex-row justify-content-between align-items-center">
+<footer class="bg-black d-flex flex-column flex-md-row justify-content-between align-items-center">
         <img class="positon-centered  my-3" src="img/banniere.jpg" alt="">
         <div class="d-none d-md-block text-white">
             <a href="https://www.facebook.com/En.K.dbesoin/">
@@ -11,7 +11,7 @@
                 <i class="bi bi-telephone mx-3"></i>
             </a>
         </div>
-        <div class="text-white d-flex align-self-end mb-3">
+        <div class="text-white d-none d-md-flex align-self-end mb-3">
             <p>Crée par</p>
             <a href="https://lelayedouard.github.io/Portfolio" class="text-decoration-none ms-3">Edouard LE LAY</a>
         </div>

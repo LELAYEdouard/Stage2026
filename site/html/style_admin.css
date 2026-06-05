@@ -42,6 +42,9 @@ header i:nth-child(1) {
         width: 18em;
     }
 }
+input{
+    appearance: textfield;
+}
 
 #contenu_modif,#contenu_reduc,#contenu_liste,#contenu_supp{
     margin: auto;
