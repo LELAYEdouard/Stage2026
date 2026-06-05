@@ -11,9 +11,14 @@
                 <i class="bi bi-telephone mx-3"></i>
             </a>
         </div>
-        <div class="text-white d-none d-md-flex align-self-end mb-3">
-            <p>Crée par</p>
-            <a href="https://lelayedouard.github.io/Portfolio" class="text-decoration-none ms-3">Edouard LE LAY</a>
+        <div class="d-column">
+            <div class="text-white d-none d-md-flex">
+                <a href="/admin.php">Vendeur</a>
+            </div>
+            <div class="text-white d-none d-md-flex align-self-end mb-3">
+                <p>Crée par</p>
+                <a href="https://lelayedouard.github.io/Portfolio" class="text-decoration-none ms-3">Edouard LE LAY</a>
+            </div>
         </div>
         <div class="text-white my-3">
             <div class="d-flex flex-row align-items-center mb-3">
