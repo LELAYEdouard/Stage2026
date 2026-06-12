@@ -4,7 +4,7 @@ ALTER DATABASE bdd_serv CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 CREATE TABLE _compte_admin (
     mail VARCHAR(80) PRIMARY KEY NOT NULL,
     mdp VARCHAR(80) NOT NULL,
-    horaire VARCHAR(500) DEFAULT `a:3:{i:0;a:2:{s:5:"jour1";s:5:"Lundi";s:8:"horaire1";s:11:"15h30-19h30";}i:1;a:2:{s:5:"jour2";s:20:"Du mardi au vendredi";s:8:"horaire2";s:24:"8h30-13h00 / 15h30-19h30";}i:2;a:2:{s:5:"jour3";s:18:"Samedi et Dimanche";s:8:"horaire3";s:10:"9h00-12h00";}}`
+    horaire VARCHAR(500) DEFAULT ""
 );
 
 
