@@ -53,7 +53,7 @@ foreach ($lst as $prod) {
 
 <?php $i++; } ?>
 
-    <button type="submit" class="btn-submit">
+    <button type="submit" class="btn-submit btn btn-dark">
         Enregistrer tous les produits
     </button>
 

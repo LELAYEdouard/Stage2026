@@ -18,10 +18,12 @@ if(isset($_POST) && ((isset($_POST['id']) && $_POST['id'] != "-1") || (isset($_P
         if ($_FILES!=NULL) {
             if(!$_FILES["image"]["error"]){
                 move_uploaded_file($_FILES["image"]["tmp_name"],"img/prod/".$_POST['reference'].".png");
-                ProduitController::create(ref:$_POST['reference'],nom:$_POST['nom'],prix:$_POST['prix'],local:$local,url_img:$_POST['reference'].".png",id_cat:$_POST['cat'],qte:$qte);
+                ProduitController::create(ref:$_POST['reference'],nom:$_POST['nom'],prix:$_POST['prix'],
+                local:$local,url_img:$_POST['reference'].".png",id_cat:$_POST['cat'],qte:$qte);
             }
             else{
-                ProduitController::create(ref:$_POST['reference'],nom:$_POST['nom'],prix:$_POST['prix'],local:$local,url_img:null,id_cat:$_POST['cat'],qte:$qte);
+                ProduitController::create(ref:$_POST['reference'],nom:$_POST['nom'],prix:$_POST['prix'],
+                local:$local,url_img:null,id_cat:$_POST['cat'],qte:$qte);
             }
         }
     }

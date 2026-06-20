@@ -21,12 +21,9 @@ for i in range(len(pages)):
     data = pages[i].extract_text().replace("\\","|").replace("{","|").replace("}","|").replace(")","|").replace("(","|").replace("[","|").replace("]","|").replace(";", "|").replace(",", ".").replace("/", "|").replace("!", ".").replace("Î", ".")
     #155555 -> |55555
     err = re.findall(r"^(1\d{5})\|", data, re.MULTILINE)
-    # print(err)
-    for e in err:
-        # print("|"+e[1:])
-        data = data.replace(e,"|"+e[1:])
-    # print(data)
 
+    for e in err:
+        data = data.replace(e,"|"+e[1:])
 
     match = re.findall(r"^(\d{5}) .* (\d{1,2}) ", data, re.MULTILINE)
     if(not match):

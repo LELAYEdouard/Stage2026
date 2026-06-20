@@ -8,12 +8,6 @@ while read path action file; do
     if [ "$file" = "$FICHIER" ]; then
         
         ocrmypdf facture/input/facture.pdf facture/output/output.pdf
-        # docker run --rm \
-        # -v "./facture:/facture" \
-        # jbarlow83/ocrmypdf \
-        # -l fra \
-        # /facture/input/facture.pdf \
-        # /facture/output/output.pdf
 
         docker exec pdf_python python3 /site/ocr/pdf2sql.py output.pdf
 
